@@ -29,15 +29,18 @@ class OutputHandler(object):
     def print_error(self, fpath, exception):
         print("[ERROR] %s" % (exception))
 
+
+
 class OutputHandler_csv(OutputHandler):
     def __init__(self):
-        self.csv_writer = csv.writer(sys.stdout, delimiter = ',',quotechar='"', quoting=csv.QUOTE_ALL)
+        csvoutput = open ('../lookups/indicatorsofcompromise.csv','ab')
+        self.csv_writer = csv.writer(csvoutput, delimiter = ',',quotechar='"', quoting=csv.QUOTE_ALL, lineterminator='\n')
 
     def print_match(self, fpath, page, name, match):
-        self.csv_writer.writerow((fpath, page, name, match))
+        self.csv_writer.writerow((os.path.basename(fpath), page, name, match))
 
     def print_error(self, fpath, exception):
-        self.csv_writer.writerow((fpath, '0', 'error', exception))
+        self.csv_writer.writerow((os.path.basename(fpath), '0', 'error', exception))
 
 class OutputHandler_json(OutputHandler):
     def print_match(self, fpath, page, name, match):
