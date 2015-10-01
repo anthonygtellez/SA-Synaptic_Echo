@@ -6,8 +6,8 @@ You can learn more about this project or contribute: https://github.com/kbandla/
 </br>
 ###System Requirements:
 This SA requires the user to be running Python 2.7</br>
-This SA has only Tested for Linux & Mac OS</br>
-Requires Pip to install pdf parsing libary</br>
+This SA has only been tested for Linux & Mac OS</br>
+SA Requires Pip to install the pdf parsing libary</br>
 </br>
 ###Installation Instructions:
 Install the .tar.gz file using the splunk command line, via the GUI or untar the tarball into `$SPLUNK_HOME$/etc/apps`</br>
@@ -66,3 +66,6 @@ This final step may take some time depending on the number of IOCs detected and 
 
 ###Splunk Configuration:
 
+###Legal
+Splunk is a registered trademark of Splunk, Inc.</br>
+Synaptic Echo™ is a trademark of Anthony Tellez
