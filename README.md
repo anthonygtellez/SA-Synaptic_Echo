@@ -40,19 +40,25 @@ This step is required in order to prevent the script from treaing white space as
 Usage:</br>
 Create a folder/directory to store the pdfs to mass import:</br>
 `mkdir fireye_reports`</br>
+
 cd into the directory where the pdf files are`eg. $ cd fireeye_reports`</br>
-`$ pwd ../../fireeye_reports`</br>
+`$ pwd `</br>
+`/saved_data/ioc_reports/fireeye_reports`</br>
+
 execute the script, it will only rename files in your current directory.</br>
 `$ bash removespaces.sh`</br>
+
 Now that you have a friendly name for your pdf files you need to build a list for the mass import script:</br>
 `$SPLUNK_HOME$/SA-Synaptic_Echo/bin/massimport.sh`</br>
+
 Use the commandline to output all of the path/to/pdffiles</br>
 From `$SPLUNK_HOME$/SA-Synaptic_Echo/bin/`</br>
-`$ ls /saved_data/ioc_reports_*_reports/*.pdf > all_ioc_reports.txt`</br>
+`$ ls /saved_data/ioc_reports/*_reports/*.pdf > all_ioc_reports.txt`</br>
+
 Once this step is complete, you will have a textfile list that looks like:</br>
-`/saved_data/ioc_reports_fireeye_reports/fireeye_ioc_report.pdf`</br>
-`/saved_data/ioc_reports_isight_reports/isight_ioc_report.pdf`</br>
-`/saved_data/ioc_report_clownstrike_reports/threatbutt_ioc_report.pdf`</br>
+`/saved_data/ioc_reports/fireeye_reports/fireeye_ioc_report.pdf`</br>
+`/saved_data/ioc_reports/isight_reports/isight_ioc_report.pdf`</br>
+`/saved_data/ioc_reports/clownstrike_reports/threatbutt_ioc_report.pdf`</br>
 </br>
 This file will be used for the mass import.</br>
 This final step may take some time depending on the number of IOCs detected and the number of PDFs you are parsing.</br>
