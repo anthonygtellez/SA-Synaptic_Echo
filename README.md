@@ -7,25 +7,25 @@ You can learn more about this project or contribute: https://github.com/kbandla/
 ###System Requirements:
 This SA requires the user to be running Python 2.7</br>
 This SA has only been tested for Linux & Mac OS</br>
-SA Requires Pip to install the pdf parsing libary</br>
+SA Requires PIP to install the pdf parsing libary</br>
 </br>
 ###Installation Instructions:
 Install the .tar.gz file using the splunk command line, via the GUI or untar the tarball into `$SPLUNK_HOME$/etc/apps`</br>
 ####Use command line install PIP</br>
 On Debian and Ubuntu:
 
-`sudo apt-get install python-pip`
+`$ sudo apt-get install python-pip`
 
 On Fedora:
 
-`sudo yum install python-pip`
+`$ sudo yum install python-pip`
 
 Use PIP to install the pdf parsing libarary:</br>
-`pip install pdfminer`
+`$ pip install pdfminer`
 
 cd to: `$SPLUNK_HOME$/etc/apps/SA-Synaptic_Echo/bin`</br>
 run the following command:</br>
-`python iocp.py /path/to/pdffile`</br>
+`$ python iocp.py /path/to/pdffile`</br>
 
 Running this will append the IOC indicators into the lookup file `indicatorsofcompromise.csv`
 
@@ -39,7 +39,7 @@ This bash script will rename the PDFs to a friendly format eg. `fireeye ioc repo
 This step is required in order to prevent the script from treaing white space as seperate items.
 Usage:</br>
 Create a folder/directory to store the pdfs to mass import:</br>
-`mkdir fireye_reports`</br>
+`$ mkdir fireye_reports`</br>
 
 cd into the directory where the pdf files are`eg. $ cd fireeye_reports`</br>
 `$ pwd `</br>
@@ -62,10 +62,11 @@ Once this step is complete, you will have a textfile list that looks like:</br>
 </br>
 This file will be used for the mass import.</br>
 This final step may take some time depending on the number of IOCs detected and the number of PDFs you are parsing.</br>
-`bash massimport.sh all_ioc_reports.txt`</br>
+`$ bash massimport.sh all_ioc_reports.txt`</br>
 
 ###Splunk Configuration:
 
 ###Legal
 Splunk is a registered trademark of Splunk, Inc.</br>
 Synaptic Echo™ is a trademark of Anthony Tellez
+
