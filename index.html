@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Synaptic Echo by anthonygtellez</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Synaptic Echo</h1>
+        <h2>This Supporting Add-On Parses PDF indicators of compromise (IOCs), keeps a repository of the PDF&#39;s uploaded and runs scheduled searches against IOCs.</h2>
+        <a href="https://github.com/anthonygtellez/SA-Synaptic_Echo" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h2>
+<a id="sa-synaptic_echo" class="anchor" href="#sa-synaptic_echo" aria-hidden="true"><span class="octicon octicon-link"></span></a>SA-Synaptic_Echo</h2>
+
+<p>This Supporting Add-On Parses PDF indicators of compromise (IOCs), keeps a repository of the PDF's uploaded and runs scheduled searches against IOCs.
+
+SA-Synaptic_Echo ships with the APTnotes PDFs by defualt. The PDFs are located in <code>SA-Synaptic_Echo/bin/APTnotes</code> and organized by year. They have already been parsed and appear in the csv lookupfile: <code>indicatorsofcompromise.csv</code>
+You can learn more about this project or contribute: <a href="https://github.com/kbandla/APTnotes">https://github.com/kbandla/APTnotes</a>
+</p>
+
+<h3>
+<a id="system-requirements" class="anchor" href="#system-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>System Requirements:</h3>
+
+<p>This SA requires the user to be running Python 2.7
+This SA has only been tested for Linux &amp; Mac OS
+SA Requires PIP to install the pdf parsing libary
+</p>
+
+<h3>
+<a id="installation-instructions" class="anchor" href="#installation-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation Instructions:</h3>
+
+<p>Install the .tar.gz file using the splunk command line, via the GUI or untar the tarball into <code>$SPLUNK_HOME$/etc/apps</code></p>
+
+<h4>
+<a id="use-command-line-install-pip" class="anchor" href="#use-command-line-install-pip" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use command line install PIP</h4>
+
+<p>On Debian and Ubuntu:</p>
+
+<p><code>$ sudo apt-get install python-pip</code></p>
+
+<p>On Fedora:</p>
+
+<p><code>$ sudo yum install python-pip</code></p>
+
+<p>Use PIP to install the pdf parsing libarary:
+<code>$ pip install pdfminer</code></p>
+
+<p>cd to: <code>$SPLUNK_HOME$/etc/apps/SA-Synaptic_Echo/bin</code>
+run the following command:
+<code>$ python iocp.py /path/to/pdffile</code></p>
+
+<p>Running this will append the IOC indicators into the lookup file <code>indicatorsofcompromise.csv</code></p>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage:</h3>
+
+<p>
+I have also included a few extra utilities which allow you to do a mass importation of pdfs:</p>
+
+<p><code>$SPLUNK_HOME$/SA-Synaptic_Echo/bin/removespaces.sh</code>
+
+This bash script will rename the PDFs to a friendly format eg. <code>fireeye ioc report.pdf -&gt; fireeye_ioc_report.pdf</code>
+This step is required in order to prevent the script from treaing white space as seperate items.
+Usage:
+Create a folder/directory to store the pdfs to mass import:
+<code>$ mkdir fireye_reports</code></p>
+
+<p>cd into the directory where the pdf files are<code>eg. $ cd fireeye_reports</code>
+<code>$ pwd</code>
+<code>/saved_data/ioc_reports/fireeye_reports</code></p>
+
+<p>execute the script, it will only rename files in your current directory.
+<code>$ bash removespaces.sh</code></p>
+
+<p>Now that you have a friendly name for your pdf files you need to build a list for the mass import script:
+<code>$SPLUNK_HOME$/SA-Synaptic_Echo/bin/massimport.sh</code></p>
+
+<p>Use the commandline to output all of the path/to/pdffiles
+From <code>$SPLUNK_HOME$/SA-Synaptic_Echo/bin/</code>
+<code>$ ls /saved_data/ioc_reports/*_reports/*.pdf &gt; all_ioc_reports.txt</code></p>
+
+<p>Once this step is complete, you will have a textfile list that looks like:
+<code>/saved_data/ioc_reports/fireeye_reports/fireeye_ioc_report.pdf</code>
+<code>/saved_data/ioc_reports/isight_reports/isight_ioc_report.pdf</code>
+<code>/saved_data/ioc_reports/clownstrike_reports/threatbutt_ioc_report.pdf</code>
+
+This file will be used for the mass import.
+This final step may take some time depending on the number of IOCs detected and the number of PDFs you are parsing.
+<code>$ bash massimport.sh all_ioc_reports.txt</code></p>
+
+<h3>
+<a id="splunk-configuration" class="anchor" href="#splunk-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Splunk Configuration:</h3>
+
+<h3>
+<a id="legal" class="anchor" href="#legal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Legal</h3>
+
+<p>Splunk is a registered trademark of Splunk, Inc.
+Synaptic Echo™ is a trademark of Anthony Tellez</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/anthonygtellez/SA-Synaptic_Echo/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/anthonygtellez/SA-Synaptic_Echo/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/anthonygtellez/SA-Synaptic_Echo"></a> is maintained by <a href="https://github.com/anthonygtellez">anthonygtellez</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
