@@ -11,7 +11,7 @@ SA Requires PIP to install the pdf parsing libary</br>
 </br>
 ###Installation Instructions:
 Install the .tar.gz file using the splunk command line, via the GUI or untar the tarball into `$SPLUNK_HOME$/etc/apps`</br>
-####Use command line install PIP</br>
+####Use command line to install PIP</br>
 On Debian and Ubuntu:
 
 `$ sudo apt-get install python-pip`
@@ -68,5 +68,5 @@ This final step may take some time depending on the number of IOCs detected and 
 
 ###Legal
 Splunk is a registered trademark of Splunk, Inc.</br>
-Synaptic Echo™ is a trademark of Anthony Tellez
+Synaptic Echo is a registered trademark of Anthony Tellez
 
