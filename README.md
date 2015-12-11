@@ -1,4 +1,4 @@
-## Supporting Add-On Synaptic_Echo (SA-Synaptic_Echo)
+# Supporting Add-On Synaptic Echo![alt tag](http://i.imgur.com/BuLhHY5.png)
 This Supporting Add-On Parses PDF indicators of compromise (IOCs), keeps a repository of the PDF's uploaded and runs scheduled searches against IOCs.</br>
 </br>
 SA-Synaptic_Echo ships with the APTnotes PDFs by defualt. The PDFs are located in `SA-Synaptic_Echo/bin/APTnotes` and organized by year. They have already been parsed and appear in the csv lookupfile: `indicatorsofcompromise.csv`</br>
